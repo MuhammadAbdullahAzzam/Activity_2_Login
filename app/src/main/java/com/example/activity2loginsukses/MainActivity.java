@@ -2,6 +2,7 @@ package com.example.activity2loginsukses;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -39,11 +40,35 @@ public class MainActivity extends AppCompatActivity {
                 String nama = edemail.getText().toString();
                 String password = edpassword.getText().toString();
 
+                //mengeset email yang benar
+                String email ="azzam@gmail.com";
+
+                //mengeset password yang benar
+                String pass = "123";
+
                 if(nama.equals("azzam@gmail.com") && password.equals("123")) {
                     //jika login berhasil
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Login Sukses", Toast.LENGTH_LONG);
                     t.show();
+                    //membuat objek bundle
+                    Bundle b = new Bundle();
+                    //memasukkan value dari variabel nama dengan kunci "a"
+                    // dan dimasukkan kedalam bundle
+                    b.putString("a", nama.trim());
+
+                    //memasukkan value dari variable password dengan kunci "b"
+                    // dan dimasukkan kedalam bundle
+                    b.putString("b", password.trim());
+
+                    //membuat objek intent berpindah activity dari mainactivity ke ActivityHasil
+                    Intent i = new Intent(getApplicationContext(), ActivityHasil.class);
+
+                    //memasukkan bundle kedalam intent untuk dikirimkan ke ActivityHasil
+                    i.putExtras(b);
+
+                    //berpindah ke ActivityHasil
+                    startActivity(i);
 
                 }
                 else if(!nama.equals("azzam@gmail.com") && password.equals("123")) {
@@ -63,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Email dan Password salah", Toast.LENGTH_LONG);
                     t.show();
+
 
                 }
             }
