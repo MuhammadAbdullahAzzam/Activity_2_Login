@@ -1,9 +1,12 @@
 package com.example.activity2loginsukses;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,12 +44,12 @@ public class MainActivity extends AppCompatActivity {
                 String password = edpassword.getText().toString();
 
                 //mengeset email yang benar
-                String email ="azzam@gmail.com";
+                String email ="admin@mail.com";
 
                 //mengeset password yang benar
                 String pass = "123";
 
-                if(nama.equals("azzam@gmail.com") && password.equals("123")) {
+                if(nama.equals("admin@mail.com") && password.equals("123")) {
                     //jika login berhasil
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Login Sukses", Toast.LENGTH_LONG);
@@ -71,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
 
                 }
-                else if(!nama.equals("azzam@gmail.com") && password.equals("123")) {
+                else if(!nama.equals("admin@mail.com") && password.equals("123")) {
                     //jika email salah
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Email salah", Toast.LENGTH_LONG);
                     t.show();
                 }
-                else if(nama.equals("azzam@gmail.com") && !password.equals("123")) {
+                else if(nama.equals("admin@mail.com") && !password.equals("123")) {
                     //jika password salah
                     Toast t = Toast.makeText(getApplicationContext(),
                             "Password salah", Toast.LENGTH_LONG);
@@ -89,11 +92,29 @@ public class MainActivity extends AppCompatActivity {
                             "Email dan Password salah", Toast.LENGTH_LONG);
                     t.show();
 
-
                 }
             }
 
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //Method untuk menampilkan menu.
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        //Membuat kondisi jika yang dipilih adalah id mnDaftar
+        if (item.getItemId() == R.id.mnDaftar)
+        {
+            //Method untuk memanggil activity "DaftarActivity"
+            Intent i = new Intent(getApplicationContext(), daftar.class);
+            startActivity(i);
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
