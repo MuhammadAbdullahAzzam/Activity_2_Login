@@ -9,8 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Activity2LoginSukses">
-        <activity android:name=".daftar"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".ActivityLihatData"
+            android:parentActivityName=".HomeActivity"></activity>
+        <activity android:name=".HomeActivity"
+            android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".daftar"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".ActivityHasil"
             android:label="@string/label2"
